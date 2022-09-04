@@ -79,7 +79,7 @@ key = st.text_input(label="",placeholder="Nhập tên sản phẩm", key="Search
 if st.session_state.Search:
   TIKI_SEARCH = "https://tiki.vn/api/v2/products?limit=48&include=advertisement&aggregations=2&trackity_id=a818abb0-b29b-a7e7-c95b-bfa1603a6b24&q={}&sort=top_seller"
   LAZADA_SEARCH = "https://www.lazada.vn/catalog/?_keyori=ss&ajax=true&from=input&isFirstRequest=true&page=1&q={}&spm=a2o4n.searchlist.search.go.5e594c25s1bBVU"
-  # SHOPEE_SEARCH = "https://shopee.vn/api/v4/search/search_items?by=relevancy&keyword={}&limit=60&newest=0&order=desc&page_type=search&scenario=PAGE_GLOBAL_SEARCH&version=2"
+  SHOPEE_SEARCH = "https://shopee.vn/api/v4/search/search_items?by=relevancy&keyword={}&limit=60&newest=0&order=desc&page_type=search&scenario=PAGE_GLOBAL_SEARCH&version=2"
   tikiData = LoadDataFromWeb(TIKI_SEARCH.format(key))
   lazadaData = LoadDataFromWeb(LAZADA_SEARCH.format(key))
   shopeeData = LoadDataFromWeb(SHOPEE_SEARCH.format(key))
