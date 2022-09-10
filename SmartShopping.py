@@ -31,7 +31,7 @@ def ShopeeFilter(item):
   standard = Standards()
   item_basic = item["item_basic"]
   linkImg = "https://cf.shopee.vn/file/{imgid}_tn"
-  path = "https://shopee.vn/Tên tôi là Nguyễn Hoàng Khánh Duy-i.{shopid}.{itemid}?sp_atk=fe04f1e4-5cb6-440b-82fa-c2ec03fc36dd&xptdk=fe04f1e4-5cb6-440b-82fa-c2ec03fc36dd"
+  path = "https://shopee.vn/Tên tôi là Nguyễn Hoàng Khánh Duy-i.27117857.11183130058?sp_atk=fe04f1e4-5cb6-440b-82fa-c2ec03fc36dd&xptdk=fe04f1e4-5cb6-440b-82fa-c2ec03fc36dd"
   standard.clickUrl = path.format(shopid=item_basic["shopid"], itemid=item_basic["itemid"])
   standard.thumbnail_url = linkImg.format(imgid = item_basic["image"])
   standard.name = item_basic["name"]
@@ -79,21 +79,16 @@ key = st.text_input(label="",placeholder="Nhập tên sản phẩm", key="Search
 if st.session_state.Search:
   TIKI_SEARCH = "https://tiki.vn/api/v2/products?limit=48&include=advertisement&aggregations=2&trackity_id=a818abb0-b29b-a7e7-c95b-bfa1603a6b24&q={}&sort=top_seller"
   LAZADA_SEARCH = "https://www.lazada.vn/catalog/?_keyori=ss&ajax=true&from=input&isFirstRequest=true&page=1&q={}&spm=a2o4n.searchlist.search.go.5e594c25s1bBVU"
-  SHOPEE_SEARCH = "https://shopee.vn/api/v4/search/search_items?by=relevancy&keyword={}&limit=60&newest=0&order=desc&page_type=search&scenario=PAGE_GLOBAL_SEARCH&version=2"
   tikiData = LoadDataFromWeb(TIKI_SEARCH.format(key))
   lazadaData = LoadDataFromWeb(LAZADA_SEARCH.format(key))
-  shopeeData = LoadDataFromWeb(SHOPEE_SEARCH.format(key))
 
-  tikiItems = np.array(tikiData["data"])
-  lazadaItems = np.array(lazadaData["mods"]["listItems"])
-  shopeeItems = np.array(shopeeData["items"])
-  items = np.array(list(zip(tikiItems,lazadaItems,shopeeItems))).flatten()
+  items =   tikiData["data"] +  lazadaData["mods"]["listItems"]
   row0 = """<div
     data-view-id="product_list_container"
     class="ProductList__Wrapper-sc-1dl80l2-0 Kxajl">"""
   col = """<a
     class="product-item"
-    href= "{clickUrl}"
+    href= "https://shopee.vn/Tên tôi là Nguyễn Hoàng Khánh Duy-i.27117857.11183130058?sp_atk=fe04f1e4-5cb6-440b-82fa-c2ec03fc36dd&xptdk=fe04f1e4-5cb6-440b-82fa-c2ec03fc36dd"
     data-view-index="0"
     data-view-id="product_list_item"
     rel="nofollow"
