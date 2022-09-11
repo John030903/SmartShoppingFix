@@ -5,7 +5,8 @@ import numpy as np
 from numerize import numerize
 
 def LoadDataFromWeb(url):
-    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.47',}
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.47',
+    "sz-token": "0NWhhfQXQgi9Qn4ElasoKA==|jMMAlC4rBVI1+VnK9d3sAlUJEGPIotipn0Jl+9fp0hcyveQeenaBC+lCrOH5r4zadwb9JzMKr0C4xfCJ7EhmdsVAXQ==|NRFfWH5Fz2nStUPz|05|3"}
     response = requests.get(url, headers=headers)
     data = json.loads(response.content)
     return data
