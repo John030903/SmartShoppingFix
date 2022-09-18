@@ -6,7 +6,7 @@ from numerize import numerize
 
 def LoadDataFromWeb(url):
     headers = {'user-agent': '*'}
-    response = requests.get(url, headers=headers)
+    response = requests.get(url)
     st.write(response.status_code)
     data = json.loads(response.content)
     return data
